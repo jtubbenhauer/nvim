@@ -1,14 +1,12 @@
 local M = {
 	"CopilotC-Nvim/CopilotChat.nvim",
-	branch = "canary",
+	branch = "main",
 	dependencies = {
-		{ "github/copilot.vim" }, -- or github/copilot.vim
-		{ "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+		{ "github/copilot.vim" },
+		{ "nvim-lua/plenary.nvim", branch = "master" },
 	},
+	build = "make tiktoken",
 	opts = {
-		debug = false, -- Enable debugging
-		-- See Configuration section for rest
-
 		window = {
 			layout = "vertical",
 			-- width = 0.5,
@@ -16,4 +14,5 @@ local M = {
 		},
 	},
 }
+
 return M

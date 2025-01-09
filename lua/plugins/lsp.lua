@@ -7,6 +7,11 @@ local M = {
 		{ "j-hui/fidget.nvim", opts = {} },
 		{ "folke/neodev.nvim", opts = {} },
 	},
+	opts = {
+		document_highlight = {
+			enabled = false,
+		},
+	},
 	config = function()
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
@@ -46,7 +51,7 @@ local M = {
 
 		local servers = {
 			vtsls = {
-				filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "htmlangular" },
+				filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
 				root_dir = require("lspconfig.util").root_pattern(".git"),
 				settings = {
 					vtsls = {
@@ -60,7 +65,7 @@ local M = {
 					},
 					typescript = {
 						tsserver = {
-							maxTsServerMemory = 4000,
+							maxTsServerMemory = 8000,
 						},
 					},
 				},
@@ -70,7 +75,6 @@ local M = {
 			},
 			angularls = {
 				root_dir = require("lspconfig.util").root_pattern("angular.json", "project.json", ".git"),
-				-- root_dir = require("lspconfig.util").root_pattern(".git"),
 				on_init = function(client)
 					client.server_capabilities.renameProvider = false
 				end,

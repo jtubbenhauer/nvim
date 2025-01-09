@@ -2,7 +2,6 @@ local set = vim.keymap.set
 local gs = require("gitsigns")
 
 -- Fzf
-
 set("n", "<leader>fz", ":lua require('fzf-lua').builtin({ winopts = { fullscreen=false, height=0.8, width=0.5 } })<cr>")
 set("n", "<leader>sf", ":lua require('fzf-lua').files()<cr>")
 set("n", "<leader>ss", ":lua require('fzf-lua').git_status()<cr>")
@@ -17,16 +16,14 @@ set("n", "<leader>si", ":lua require('utils').grep_directory()<cr>")
 -- File browser
 set("n", "<leader>er", ":Oil .<cr>")
 set("n", "<leader>ed", ":Oil<cr>")
+set("n", "<leader>dc", ":lua require('utils').get_trimmed_cwd()<cr>")
 
 -- LSP
 set("n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>")
 set("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<CR>")
--- set("n", "gn", ":lua vim.diagnostic.goto_next()<CR>")
--- set("n", "gp", ":lua vim.diagnostic.goto_prev()<CR>")
 set("n", "ge", ":lua vim.diagnostic.open_float()<CR>")
 set("n", "gr", ":lua require('fzf-lua').lsp_references()<CR>")
 set("n", "gd", ":lua vim.lsp.buf.definition()<CR>")
--- set("n", "gh", ":lua vim.lsp.buf.hover()<CR>")
 
 set("n", "<leader>fm", ":lua require('utils').format_buffer()<CR>")
 vim.keymap.set("n", "<leader>ti", function()
@@ -41,7 +38,6 @@ set({ "i", "v" }, "<C-s>", "<Esc><cmd>w<cr>")
 set("n", "<leader>vs", "<cmd>vs<CR><cmd>wincmd l<CR>")
 set("n", "<leader>ct", "<cmd>tabclose<CR>")
 set("n", "<leader>cb", "<cmd>q<cr>")
-set("n", "<leader>ms", ":Messages messages<cr>")
 set("n", "<C-e>", "2<C-e>")
 set("n", "<C-y>", "2<C-y>")
 set({ "n", "i", "v" }, "<C-h>", ":vertical resize -5<CR>")
@@ -54,7 +50,6 @@ set("n", "<leader>sl", ":SLoad default<CR>")
 set("n", "<leader>ds", ":lua require('utils').toggle_diffview_status()<CR>")
 set("n", "<leader>db", ":lua require('utils').toggle_diffview_branch()<CR>")
 set("n", "<leader>dh", ":DiffviewFileHistory %<CR>")
-
 set("n", "<leader>dvfh", "<cmd>DiffviewFileHistory %<cr>")
 
 -- ChatGPT
@@ -72,6 +67,3 @@ set("n", "<leader>sr", ":lua require('spectre').toggle()<cr>")
 -- Git
 set("n", "<leader>hr", gs.reset_hunk)
 set("n", "<leader>gsb", ":lua require('utils').change_git_signs_base()<cr>")
-
--- Oil
-set("n", "<leader>dc", ":lua require('utils').get_trimmed_cwd()<cr>")
