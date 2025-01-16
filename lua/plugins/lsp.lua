@@ -11,6 +11,11 @@ local M = {
 		document_highlight = {
 			enabled = false,
 		},
+		-- setup = {
+		-- 	eslint = function()
+		-- 		return
+		-- 	end,
+		-- },
 	},
 	config = function()
 		vim.api.nvim_create_autocmd("LspAttach", {
@@ -70,9 +75,9 @@ local M = {
 					},
 				},
 			},
-			eslint = {
-				filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "htmlangular" },
-			},
+			-- eslint = {
+			-- 	filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "htmlangular" },
+			-- },
 			angularls = {
 				root_dir = require("lspconfig.util").root_pattern("angular.json", "project.json", ".git"),
 				on_init = function(client)

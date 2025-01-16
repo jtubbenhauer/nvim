@@ -19,8 +19,8 @@ local M = {
 			-- 	},
 			-- },
 		})
-		vim.cmd([[colorscheme catppuccin-mocha]])
+		-- vim.cmd([[colorscheme catppuccin-mocha]])
 	end,
 }
 
-return M
+return {}

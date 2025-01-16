@@ -67,3 +67,4 @@ set("n", "<leader>sr", ":lua require('spectre').toggle()<cr>")
 -- Git
 set("n", "<leader>hr", gs.reset_hunk)
 set("n", "<leader>gsb", ":lua require('utils').change_git_signs_base()<cr>")
+set("n", "<leader>gstb", gs.toggle_current_line_blame)
