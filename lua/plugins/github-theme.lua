@@ -11,6 +11,7 @@ local M = {
 			groups = {
 				github_dark_default = {
 					CursorLine = { bg = "#272b30" },
+					FloatBorder = { fg = "fg1" },
 				},
 			},
 		})
