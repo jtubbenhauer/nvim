@@ -2,28 +2,6 @@ local o = vim.o
 local wo = vim.wo
 local g = vim.g
 
--- wezterm only!
-local function paste()
-	return {
-		vim.fn.split(vim.fn.getreg(""), "\n"),
-		vim.fn.getregtype(""),
-	}
-end
-
--- if vim.env.SSH_TTY then
-vim.g.clipboard = {
-	name = "OSC 52",
-	copy = {
-		["+"] = require("vim.ui.clipboard.osc52").copy("+"),
-		["*"] = require("vim.ui.clipboard.osc52").copy("*"),
-	},
-	paste = {
-		["+"] = paste,
-		["*"] = paste,
-	},
-}
--- end
-
 g.mapleader = " "
 o.hlsearch = false
 wo.number = true
@@ -58,13 +36,5 @@ vim.diagnostic.config({
 	signs = true,
 	float = {
 		border = "single",
-		-- format = function(diagnostic)
-		-- 	return string.format(
-		-- 		"%s (%s) [%s]",
-		-- 		diagnostic.message,
-		-- 		diagnostic.source,
-		-- 		diagnostic.code or diagnostic.user_data.lsp.code
-		-- 	)
-		-- end,
 	},
 })
