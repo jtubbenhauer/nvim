@@ -79,15 +79,6 @@ M.fzf_git_changes = function()
 	require("fzf-lua").git_files({
 		cmd = "git diff --name-only origin/HEAD",
 	})
-	-- require("fzf-lua").git_branches({
-	-- 	actions = {
-	-- 		["enter"] = function(selected)
-	-- 			require("fzf-lua").git_files({
-	-- 				cmd = "git diff --name-only " .. selected[1],
-	-- 			})
-	-- 		end,
-	-- 	},
-	-- })
 end
 
 M.grep_directory = function()

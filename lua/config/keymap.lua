@@ -2,13 +2,13 @@ local set = vim.keymap.set
 local gs = require("gitsigns")
 
 -- Fzf
-set("n", "<leader>fz", ":lua require('fzf-lua').builtin({ winopts = { fullscreen=false, height=0.8, width=0.5 } })<cr>")
-set("n", "<leader>sf", ":lua require('fzf-lua').files()<cr>")
-set("n", "<leader>ss", ":lua require('fzf-lua').git_status()<cr>")
+-- set("n", "<leader>fz", ":lua require('fzf-lua').builtin({ winopts = { fullscreen=false, height=0.8, width=0.5 } })<cr>")
+-- set("n", "<leader>sf", ":lua require('fzf-lua').files()<cr>")
+-- set("n", "<leader>ss", ":lua require('fzf-lua').git_status()<cr>")
 set("n", "<leader>sc", ":lua require('utils').fzf_git_changes()<cr>")
 set("n", "<leader>qf", ":lua require('fzf-lua').quickfix()<cr>")
-set("n", "<leader>sg", ":lua require('fzf-lua').live_grep()<cr>")
-set("n", "<leader>so", ":lua require('fzf-lua').buffers()<cr>")
+-- set("n", "<leader>sg", ":lua require('fzf-lua').live_grep()<cr>")
+-- set("n", "<leader>so", ":lua require('fzf-lua').buffers()<cr>")
 set("n", "<leader>sa", ":lua require('fzf-lua').resume()<cr>")
 set("n", "<leader>sd", ":lua require('utils').fzf_dirs()<cr>")
 set("n", "<leader>si", ":lua require('utils').grep_directory()<cr>")
@@ -22,7 +22,8 @@ set("n", "<leader>dc", ":lua require('utils').get_trimmed_cwd()<cr>")
 set("n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>")
 set("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<CR>")
 set("n", "ge", ":lua vim.diagnostic.open_float()<CR>")
-set("n", "gr", ":lua require('fzf-lua').lsp_references()<CR>")
+
+-- set("n", "gr", ":lua require('fzf-lua').lsp_references()<CR>")
 set("n", "gd", ":lua vim.lsp.buf.definition()<CR>")
 
 -- General
