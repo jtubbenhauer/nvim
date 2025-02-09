@@ -1,3 +1,18 @@
+local M = {}
+
+function M.git_changes(opts, ctx)
+	return require("snacks.picker.source.proc").proc({
+		opts,
+		{
+			cmd = "git",
+			args = { "diff", "--name-only", "origin/HEAD" },
+			transform = function(item)
+				item.file = item.text
+			end,
+		},
+	}, ctx)
+end
+
 return {
 	"folke/snacks.nvim",
 	priority = 1000,
@@ -60,7 +75,18 @@ return {
 				Snacks.picker.lsp_references()
 			end,
 			nowait = true,
-			desc = "References",
+		},
+		{
+			"sc",
+			function()
+				Snacks.picker({
+					finder = M.git_changes,
+					confirm = function(picker, item)
+						picker:close()
+						vim.cmd("edit " .. item.file)
+					end,
+				})
+			end,
 		},
 	},
 }
