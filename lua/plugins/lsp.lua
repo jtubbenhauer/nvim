@@ -6,25 +6,17 @@ local M = {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		{ "j-hui/fidget.nvim", opts = {} },
 		{ "folke/neodev.nvim", opts = {} },
+		{ "saghen/blink.cmp" },
 	},
 	opts = {
 		document_highlight = {
 			enabled = false,
 		},
-		-- setup = {
-		-- 	eslint = function()
-		-- 		return
-		-- 	end,
-		-- },
 	},
 	config = function()
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 			callback = function(event)
-				-- local map = function(keys, func, desc)
-				-- 	vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
-				-- end
-
 				local client = vim.lsp.get_client_by_id(event.data.client_id)
 				if client and client.server_capabilities.documentHighlightProvider then
 					local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
@@ -50,21 +42,22 @@ local M = {
 				end
 			end,
 		})
-		local capabilities = vim.lsp.protocol.make_client_capabilities()
-		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
-		capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
+
+		-- capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+		local capabilities = require("blink.cmp").get_lsp_capabilities()
+		-- capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
 
 		local servers = {
 			vtsls = {
-				filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+				filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "htmlangular" },
 				root_dir = require("lspconfig.util").root_pattern(".git"),
 				settings = {
+					complete_function_calls = true,
 					vtsls = {
 						autoUseWorkspaceTsdk = true,
 						experimental = {
 							completion = {
 								enableServerSideFuzzyMatch = true,
-								entriesLimit = 20,
 							},
 						},
 					},
@@ -75,28 +68,25 @@ local M = {
 					},
 				},
 			},
-			-- eslint = {
-			-- 	filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "htmlangular" },
-			-- },
 			angularls = {
-				root_dir = require("lspconfig.util").root_pattern("angular.json", "project.json", ".git"),
+				root_dir = require("lspconfig.util").root_pattern("nx.json"),
 				on_init = function(client)
 					client.server_capabilities.renameProvider = false
 				end,
 			},
 			lua_ls = {
-				-- cmd = {...},
-				-- filetypes = { ...},
-				-- capabilities = {},
 				settings = {
 					Lua = {
 						completion = {
 							callSnippet = "Replace",
 						},
-						-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-						-- diagnostics = { disable = { 'missing-fields' } },
+						diagnostics = { disable = { "missing-fields" }, globals = { "vim" } },
 					},
 				},
+			},
+			roslyn = {},
+			astro = {
+				capabilities = capabilities,
 			},
 		}
 
@@ -109,15 +99,15 @@ local M = {
 
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
-			"stylua", -- Used to format Lua code
+			"stylua",
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 		local handlers = {
-			["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single", max_width = 100 }),
+			["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded", max_width = 100 }),
 			["textDocument/signatureHelp"] = vim.lsp.with(
 				vim.lsp.handlers.signature_help,
-				{ border = "single", max_width = 100 }
+				{ border = "rounded", max_width = 100 }
 			),
 		}
 

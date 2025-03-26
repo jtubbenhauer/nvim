@@ -3,10 +3,13 @@ local M = {
 	config = function()
 		require("conform").setup({
 			formatters_by_ft = {
+				asm = { "asmfmt" },
 				lua = { "stylua" },
+				astro = { "prettier" },
 				javascript = { "prettierd" },
 				typescript = { "prettierd" },
 				typescriptreact = { "prettierd" },
+				markdown = { "prettierd" },
 				html = { "prettierd" },
 				htmlangular = { "prettierd" },
 				css = { "prettierd" },

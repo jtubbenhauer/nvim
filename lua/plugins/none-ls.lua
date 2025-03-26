@@ -7,6 +7,7 @@ local M = {
 		require("null-ls").setup({
 			sources = {
 				require("none-ls.code_actions.eslint_d"),
+				require("none-ls.diagnostics.eslint_d"),
 			},
 		})
 	end,
