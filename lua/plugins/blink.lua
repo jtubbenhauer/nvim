@@ -23,6 +23,11 @@ local M = {
 		},
 		fuzzy = { implementation = "prefer_rust_with_warning" },
 		signature = { enabled = true },
+		completion = {
+			trigger = {
+				show_on_blocked_trigger_characters = { "{", "}", " ", "\n", "\t" },
+			},
+		},
 	},
 	opts_extend = { "sources.default" },
 }
