@@ -7,6 +7,9 @@ local M = {
 		require("github-theme").setup({
 			options = {
 				hide_nc_statusline = false,
+				styles = {
+					comments = "NONE",
+				},
 			},
 			groups = {
 				github_dark_default = {

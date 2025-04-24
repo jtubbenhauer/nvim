@@ -55,26 +55,26 @@ local M = {
 		capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
 
 		local servers = {
-			vtsls = {
-				filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-				root_dir = require("lspconfig.util").root_pattern(".git"),
-				settings = {
-					vtsls = {
-						autoUseWorkspaceTsdk = true,
-						experimental = {
-							completion = {
-								enableServerSideFuzzyMatch = true,
-								entriesLimit = 20,
-							},
-						},
-					},
-					typescript = {
-						tsserver = {
-							maxTsServerMemory = 8000,
-						},
-					},
-				},
-			},
+			-- vtsls = {
+			-- 	filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+			-- 	root_dir = require("lspconfig.util").root_pattern(".git"),
+			-- 	settings = {
+			-- 		vtsls = {
+			-- 			autoUseWorkspaceTsdk = true,
+			-- 			experimental = {
+			-- 				completion = {
+			-- 					enableServerSideFuzzyMatch = true,
+			-- 					entriesLimit = 20,
+			-- 				},
+			-- 			},
+			-- 		},
+			-- 		typescript = {
+			-- 			tsserver = {
+			-- 				maxTsServerMemory = 8000,
+			-- 			},
+			-- 		},
+			-- 	},
+			-- },
 			-- eslint = {
 			-- 	filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "htmlangular" },
 			-- },
