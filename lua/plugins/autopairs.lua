@@ -4,4 +4,4 @@ local M = {
 	opts = {},
 }
 
-return M
+return {}

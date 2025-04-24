@@ -7,6 +7,9 @@ local M = {
 	---@module 'blink.cmp'
 	---@type blink.cmp.Config
 	opts = {
+		enabled = function()
+			return not vim.tbl_contains({ "markdown" }, vim.bo.filetype)
+		end,
 		keymap = {
 			preset = "default",
 			["<C-j>"] = { "select_next", "fallback" },
@@ -19,8 +22,9 @@ local M = {
 			nerd_font_variant = "mono",
 		},
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer" },
+			default = { "lsp", "path" },
 		},
+		-- "snippets""buffer"
 		fuzzy = { implementation = "prefer_rust_with_warning" },
 		signature = { enabled = true },
 		completion = {
@@ -32,4 +36,4 @@ local M = {
 	opts_extend = { "sources.default" },
 }
 
-return M
+return {}

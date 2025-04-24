@@ -23,7 +23,7 @@ set("n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>")
 set("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<CR>")
 set("n", "ge", ":lua vim.diagnostic.open_float()<CR>")
 set("n", "gr", ":lua require('fzf-lua').lsp_references()<CR>")
-set("n", "gd", ":lua vim.lsp.buf.definition()<CR>")
+set("n", "gd", ":lua require('fzf-lua').lsp_definitions()<CR>")
 
 set("n", "<leader>fm", ":lua require('utils').format_buffer()<CR>")
 vim.keymap.set("n", "<leader>ti", function()
@@ -68,3 +68,50 @@ set("n", "<leader>sr", ":lua require('spectre').toggle()<cr>")
 set("n", "<leader>hr", gs.reset_hunk)
 set("n", "<leader>gsb", ":lua require('utils').change_git_signs_base()<cr>")
 set("n", "<leader>gstb", gs.toggle_current_line_blame)
+
+---- COC
+---
+-- Autocomplete
+function _G.check_back_space()
+	local col = vim.fn.col(".") - 1
+	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s") ~= nil
+end
+
+local keyset = vim.keymap.set
+local opts = { silent = true, noremap = true, expr = true, replace_keycodes = false }
+keyset("i", "<C-j>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<C-j>" : coc#refresh()', opts)
+keyset("i", "<C-k>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-k>"]], opts)
+keyset("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
+keyset("n", "gd", "<Plug>(coc-definition)", { silent = true })
+keyset("n", "gy", "<Plug>(coc-type-definition)", { silent = true })
+keyset("n", "gi", "<Plug>(coc-implementation)", { silent = true })
+keyset("n", "gr", "<Plug>(coc-references)", { silent = true })
+
+-- Use K to show documentation in preview window
+function _G.show_docs()
+	local cw = vim.fn.expand("<cword>")
+	if vim.fn.index({ "vim", "help" }, vim.bo.filetype) >= 0 then
+		vim.api.nvim_command("h " .. cw)
+	elseif vim.api.nvim_eval("coc#rpc#ready()") then
+		vim.fn.CocActionAsync("doHover")
+	else
+		vim.api.nvim_command("!" .. vim.o.keywordprg .. " " .. cw)
+	end
+end
+keyset("n", "K", "<CMD>lua _G.show_docs()<CR>", { silent = true })
+-- Highlight the symbol and its references on a CursorHold event(cursor is idle)
+vim.api.nvim_create_augroup("CocGroup", {})
+vim.api.nvim_create_autocmd("CursorHold", {
+	group = "CocGroup",
+	command = "silent call CocActionAsync('highlight')",
+	desc = "Highlight symbol under cursor on CursorHold",
+})
+
+-- Symbol renaming
+keyset("n", "<leader>rn", "<Plug>(coc-rename)", { silent = true })
+
+keyset("i", "<C-a>", "coc#refresh()", opts)
+keyset("n", "[d", "<Plug>(coc-diagnostic-prev)", {silent = true})
+keyset("n", "]d", "<Plug>(coc-diagnostic-next)", {silent = true})
+keyset("n", "<leader>ca", "<Plug>(coc-codeaction-cursor)")
+-- keyset("n", "<leader>qf", "<Plug>(coc-fix-current)", opts)

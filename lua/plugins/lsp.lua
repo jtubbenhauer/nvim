@@ -42,15 +42,18 @@ local M = {
 				end
 			end,
 		})
+		-- blink
+		-- local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-		-- capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
-		local capabilities = require("blink.cmp").get_lsp_capabilities()
-		-- capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
+		-- nvim-cmp
+		local capabilities = vim.lsp.protocol.make_client_capabilities()
+		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+		capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
 
 		local servers = {
 			vtsls = {
 				filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "htmlangular" },
-				root_dir = require("lspconfig.util").root_pattern(".git"),
+				root_dir = require("lspconfig.util").root_pattern("tsconfig.json", ".git"),
 				settings = {
 					complete_function_calls = true,
 					vtsls = {
@@ -63,13 +66,14 @@ local M = {
 					},
 					typescript = {
 						tsserver = {
-							maxTsServerMemory = 8000,
+							maxTsServerMemory = 16000,
 						},
 					},
 				},
 			},
 			angularls = {
-				root_dir = require("lspconfig.util").root_pattern("nx.json"),
+				-- root_dir = require("lspconfig.util").root_pattern("nx.json"),
+				root_dir = require("lspconfig.util").root_pattern("nx.json", "angular.json", ".git"),
 				on_init = function(client)
 					client.server_capabilities.renameProvider = false
 				end,
@@ -124,4 +128,4 @@ local M = {
 	end,
 }
 
-return M
+return {}

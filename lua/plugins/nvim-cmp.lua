@@ -40,7 +40,13 @@ local M = {
 			sources = {
 				{ name = "nvim_lsp" },
 				-- { name = "luasnip" },
-				-- { name = "path" },
+				{ name = "path" },
+			},
+			formatting = {
+				format = function(entry, vim_item)
+					vim_item.abbr = string.sub(vim_item.abbr, 1, 20)
+					return vim_item
+				end,
 			},
 		})
 	end,
