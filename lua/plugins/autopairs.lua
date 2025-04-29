@@ -1,7 +1,11 @@
 local M = {
 	"windwp/nvim-autopairs",
 	event = "InsertEnter",
-	opts = {},
+  config = function ()
+    require('nvim-autopairs').setup({
+      map_cr = false
+    })
+  end
 }
 
-return {}
+return M

@@ -111,7 +111,7 @@ vim.api.nvim_create_autocmd("CursorHold", {
 keyset("n", "<leader>rn", "<Plug>(coc-rename)", { silent = true })
 
 keyset("i", "<C-a>", "coc#refresh()", opts)
-keyset("n", "[d", "<Plug>(coc-diagnostic-prev)", {silent = true})
-keyset("n", "]d", "<Plug>(coc-diagnostic-next)", {silent = true})
-keyset("n", "<leader>ca", "<Plug>(coc-codeaction-cursor)")
+keyset("n", "[d", "<Plug>(coc-diagnostic-prev)", { silent = true })
+keyset("n", "]d", "<Plug>(coc-diagnostic-next)", { silent = true })
+keyset("n", "<leader>ca", "<cmd>Telescope coc code_actions<cr>")
 -- keyset("n", "<leader>qf", "<Plug>(coc-fix-current)", opts)

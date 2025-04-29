@@ -16,5 +16,7 @@
       "filetypes": ["ts", "typescript", "html"],
       "trace.server.verbosity": "verbose"
     }
-  }
+  },
+  "typescript.suggest.completeFunctionCalls": false,
+  "javascript.suggest.completeFunctionCalls": false
 }
