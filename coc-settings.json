@@ -3,6 +3,7 @@
     "border": true,
     "rounded": true
   },
+  "tsserver.maxTsServerMemory": 12000,
   "languageserver": {
     "angular": {
       "command": "ngserver",
