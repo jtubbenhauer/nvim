@@ -10,9 +10,9 @@
       "args": [
         "--stdio",
         "--tsProbeLocations",
-        "/home/jack/.nvm/versions/node/v20.17.0/lib/node_modules/typescript/lib",
+        "/home/jack/.nvm/versions/node/v20.19.1/lib/node_modules/typescript/lib",
         "--ngProbeLocations",
-        "/home/jack/.nvm/versions/node/v20.17.0/lib/node_modules/@angular/language-server/bin"
+        "/home/jack/.nvm/versions/node/v20.19.1/lib/node_modules/@angular/language-server/bin"
       ],
       "filetypes": ["ts", "typescript", "html"],
       "trace.server.verbosity": "verbose"
