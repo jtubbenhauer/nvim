@@ -1,23 +1,23 @@
 local server_configs = {
-	vtsls = {
-		filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "htmlangular" },
-		settings = {
-			complete_function_calls = true,
-			vtsls = {
-				autoUseWorkspaceTsdk = true,
-				experimental = {
-					completion = {
-						enableServerSideFuzzyMatch = true,
-					},
-				},
-			},
-			typescript = {
-				tsserver = {
-					maxTsServerMemory = 11000,
-				},
-			},
-		},
-	},
+	-- vtsls = {
+	-- 	filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "htmlangular" },
+	-- 	settings = {
+	-- 		complete_function_calls = true,
+	-- 		vtsls = {
+	-- 			autoUseWorkspaceTsdk = true,
+	-- 			experimental = {
+	-- 				completion = {
+	-- 					enableServerSideFuzzyMatch = true,
+	-- 				},
+	-- 			},
+	-- 		},
+	-- 		typescript = {
+	-- 			tsserver = {
+	-- 				maxTsServerMemory = 11000,
+	-- 			},
+	-- 		},
+	-- 	},
+	-- },
 	eslint = {
 		filetypes = { "javascript", "html", "javascriptreact", "typescript", "typescriptreact", "htmlangular" },
 	},
@@ -62,6 +62,21 @@ local M = {
 			for server, config in pairs(server_configs) do
 				vim.lsp.config(server, config)
 			end
+
+			vim.lsp.config("ts_go_ls", {
+				cmd = { vim.loop.os_homedir() .. "/dev/typescript-go/built/local/tsgo", "lsp", "-stdio" },
+				filetypes = {
+					"javascript",
+					"javascriptreact",
+					"javascript.jsx",
+					"typescript",
+					"typescriptreact",
+					"typescript.tsx",
+				},
+				root_markers = { ".git", ".package.json" },
+				-- root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
+			})
+			vim.lsp.enable("ts_go_ls")
 		end,
 	},
 }
