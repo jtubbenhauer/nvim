@@ -33,3 +33,31 @@ au WinNew * au BufEnter * ++once
   \ if (&bt ==? 'help' || &ft ==? 'man')
   \ && winwidth(winnr('#')) >= 180 | wincmd L | endif
 ]])
+
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = "diffview://*",
+  callback = function()
+    vim.b.coc_enabled = false
+  end,
+})
+
+-- cool gippity debugging
+-- vim.api.nvim_create_autocmd({ "FileType", "WinEnter", "BufWinEnter" }, {
+--   pattern = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+--   callback = function(ctx)
+--     -- print a debug line so you can see it firing:
+--     vim.notify(string.format(
+--       "autocmd[%s]: buf=%s filetype=%s diff=%s",
+--       ctx.event,
+--       vim.fn.bufname("%"),
+--       vim.bo.filetype,
+--       vim.wo.diff
+--     ))
+--
+--     if vim.wo.diff then
+--       vim.b.coc_enabled = false
+--       vim.notify("→ coc disabled here")
+--     end
+--   end,
+-- })
+
