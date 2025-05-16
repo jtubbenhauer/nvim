@@ -5,6 +5,33 @@ au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=2
 augroup END
 ]])
 
+-- if vim.fn.has('wsl') == 1 then
+--   vim.g.clipboard = {
+--     name = 'WslClipboard',
+--     copy = {
+--       ['+'] = 'clip.exe',
+--       ['*'] = 'clip.exe',
+--     },
+--     paste = {
+--       ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+--       ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+--     },
+--     cache_enabled = 0,
+--   }
+-- end
+--
+-- sync with system clipboard on focus
+vim.api.nvim_create_autocmd({ "FocusGained" }, {
+  pattern = { "*" },
+  command = [[call setreg("@", getreg("+"))]],
+})
+
+ -- sync with system clipboard on focus
+vim.api.nvim_create_autocmd({ "FocusLost" }, {
+  pattern = { "*" },
+  command = [[call setreg("+", getreg("@"))]], 
+})
+
 vim.api.nvim_create_user_command("VS", function(opts)
 	vim.cmd("vert rightb " .. opts.args)
 end, { nargs = 1 })
