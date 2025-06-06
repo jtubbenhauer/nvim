@@ -18,9 +18,9 @@ local server_configs = {
 			},
 		},
 	},
-	eslint = {
-		filetypes = { "javascript", "html", "javascriptreact", "typescript", "typescriptreact", "htmlangular" },
-	},
+	-- eslint = {
+	-- 	filetypes = { "javascript", "html", "javascriptreact", "typescript", "typescriptreact", "htmlangular" },
+	-- },
 	lua_ls = {
 		lua_ls = {
 			settings = {
