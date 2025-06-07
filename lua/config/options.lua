@@ -49,6 +49,8 @@ wo.cursorline = true
 o.swapfile = false
 o.showtabline = 1
 
+-- vim.cmd("colorscheme minimalgreen")
+
 vim.opt.fillchars = {
 	diff = " ",
 }
@@ -58,13 +60,5 @@ vim.diagnostic.config({
 	signs = true,
 	float = {
 		border = "single",
-		-- format = function(diagnostic)
-		-- 	return string.format(
-		-- 		"%s (%s) [%s]",
-		-- 		diagnostic.message,
-		-- 		diagnostic.source,
-		-- 		diagnostic.code or diagnostic.user_data.lsp.code
-		-- 	)
-		-- end,
 	},
 })

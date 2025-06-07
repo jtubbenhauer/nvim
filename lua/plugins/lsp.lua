@@ -13,7 +13,7 @@ local server_configs = {
 			},
 			typescript = {
 				tsserver = {
-					maxTsServerMemory = 11000,
+					maxTsServerMemory = 16000,
 				},
 			},
 		},
