@@ -159,7 +159,7 @@ function M.load()
 	end
 
 	-- Set colorscheme name
-	vim.g.colors_name = "minimalgreen"
+	vim.g.colors_name = "minimalgreens"
 
 	-- Apply highlights
 	set_highlights()

@@ -49,8 +49,6 @@ wo.cursorline = true
 o.swapfile = false
 o.showtabline = 1
 
--- vim.cmd("colorscheme minimalgreen")
-
 vim.opt.fillchars = {
 	diff = " ",
 }

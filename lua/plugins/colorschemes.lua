@@ -37,7 +37,7 @@ local M = {
 				},
 			})
 
-			-- vim.cmd("colorscheme github_dark_default")
+			vim.cmd("colorscheme github_dark_default")
 		end,
 	},
 
@@ -71,7 +71,19 @@ local M = {
 	-- 	-- end,
 	-- },
 	{ "calind/selenized.nvim" },
-	{ "jtubbenhauer/minimalgreen.nvim" },
+	-- {
+	-- 	"jtubbenhauer/minimalgreen.nvim",
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		vim.cmd.colorscheme("minimalgreen")
+	-- 	end,
+	-- },
+	{
+		"Shatur/neovim-ayu",
+		config = function()
+			-- require("ayu").colorscheme()
+		end,
+	},
 }
 
 return M

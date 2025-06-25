@@ -38,6 +38,7 @@ set({ "n", "i", "v" }, "<C-l>", ":vertical resize +5<CR>")
 set("n", "<leader>ci", ":Inspect<CR>")
 set("n", "<leader>sv", ":SSave default<CR>")
 set("n", "<leader>sl", ":SLoad default<CR>")
+set("n", "<leader>ft", ":ToggleFormatOnSave<CR>")
 
 -- Diffview
 set("n", "<leader>ds", ":lua require('utils').toggle_diffview_status()<CR>")
@@ -61,3 +62,4 @@ set("n", "<leader>sr", ":lua require('spectre').toggle()<cr>")
 set("n", "<leader>hr", gs.reset_hunk)
 set("n", "<leader>gsb", ":lua require('utils').change_git_signs_base()<cr>")
 set("n", "<leader>gstb", gs.toggle_current_line_blame)
+set("n", "<leader>hs", gs.stage_hunk)
