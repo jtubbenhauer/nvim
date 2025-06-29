@@ -24,6 +24,7 @@ set("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<CR>")
 set("n", "ge", ":lua vim.diagnostic.open_float()<CR>")
 set("n", "gr", ":lua require('fzf-lua').lsp_references()<CR>")
 set("n", "gd", ":lua vim.lsp.buf.definition()<CR>")
+set("n", "<leader>oi", "<cmd>OrganiseImports<CR>")
 
 -- General
 set("n", "<C-s>", "<cmd>w<cr>")

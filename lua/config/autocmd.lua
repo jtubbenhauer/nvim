@@ -17,57 +17,30 @@ au WinNew * au BufEnter * ++once
 
 -- Format on save
 
-vim.g.format_on_save = true
-local format_group = vim.api.nvim_create_augroup("MyFormatOnSave", { clear = true })
-local format_file_patterns = {
-	"*.asm",
-	"*.lua",
-	"*.astro",
-	"*.js",
-	"*.jsx",
-	"*.ts",
-	"*.tsx",
-	"*.md",
-	"*.html",
-	"*.css",
-	"*.scss",
-	"*.sass",
-	"*.xml",
-	"*.py",
-	"*.go",
-	"*.json",
-	"*.jsonc",
-	"*.cpp",
-	"*.yaml",
-	"*.yml",
-	"*.cs",
-	"*.rs",
-}
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-	group = format_group,
-	pattern = format_file_patterns,
-	callback = function()
-		if not vim.g.format_on_save then
-			return
+local organise_imports = function()
+	local ft = vim.bo.filetype:gsub("react$", "")
+	if ft == "typescript" then
+		local ok = vim.lsp.buf_request_sync(0, "workspace/executeCommand", {
+			command = "typescript.organizeImports",
+			arguments = { vim.api.nvim_buf_get_name(0) },
+		}, 3000)
+		if not ok then
+			print("Organise imports timeout or failed to complete.")
 		end
+	end
+end
 
-		local ft = vim.bo.filetype:gsub("react$", "")
-		if ft == "typescript" then
-			local ok = vim.lsp.buf_request_sync(0, "workspace/executeCommand", {
-				command = "typescript.organizeImports",
-				arguments = { vim.api.nvim_buf_get_name(0) },
-			}, 3000)
-			if not ok then
-				print("Organise imports timeout or failed to complete.")
-			end
-		end
+vim.api.nvim_create_user_command("OrganiseImports", function()
+	organise_imports()
+end, { desc = "Sort TS imports" })
 
-		require("conform").format({ async = false })
-	end,
-})
-
-vim.api.nvim_create_user_command("ToggleFormatOnSave", function()
-	vim.g.format_on_save = not vim.g.format_on_save
-	print("Format on save " .. (vim.g.format_on_save and "enabled" or "disabled"))
-end, { desc = "Toggle format on save" })
+-- vim.api.nvim_create_user_command("ToggleFormatOnSave", function()
+-- 	vim.g.format_on_save = not vim.g.format_on_save
+-- 	print("Format on save " .. (vim.g.format_on_save and "enabled" or "disabled"))
+-- end, { desc = "Toggle format on save" })
+--
+-- vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+-- 	callback = function()
+-- 		require("lint").try_lint()
+-- 	end,
+-- })
