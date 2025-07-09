@@ -84,6 +84,15 @@ local M = {
 			-- require("ayu").colorscheme()
 		end,
 	},
+
+	{
+		"RostislavArts/naysayer.nvim",
+		priority = 1000,
+		lazy = false,
+		-- config = function()
+		-- 	vim.cmd.colorscheme("naysayer")
+		-- end,
+	},
 }
 
 return M

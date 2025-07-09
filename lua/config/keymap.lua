@@ -40,6 +40,7 @@ set("n", "<leader>ci", ":Inspect<CR>")
 set("n", "<leader>sv", ":SSave default<CR>")
 set("n", "<leader>sl", ":SLoad default<CR>")
 set("n", "<leader>ft", ":ToggleFormatOnSave<CR>")
+set("n", "<leader>cd", ":lua require('utils').copy_buffer_dir()<cr>")
 
 -- Diffview
 set("n", "<leader>ds", ":lua require('utils').toggle_diffview_status()<CR>")

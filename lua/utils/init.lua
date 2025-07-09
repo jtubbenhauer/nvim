@@ -136,4 +136,12 @@ M.format_buffer = function()
 	require("conform").format()
 end
 
+M.copy_buffer_dir = function()
+	-- %:p:h  => absolute path of the file's directory
+	local dir = vim.fn.expand("%:p:h")
+	vim.fn.setreg("+", dir) -- system clipboard
+	vim.fn.setreg('"', dir) -- unnamed register (handy for :put)
+	print("📋 Copied: " .. dir)
+end
+
 return M

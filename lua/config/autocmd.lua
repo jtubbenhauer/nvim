@@ -38,9 +38,3 @@ end, { desc = "Sort TS imports" })
 -- 	vim.g.format_on_save = not vim.g.format_on_save
 -- 	print("Format on save " .. (vim.g.format_on_save and "enabled" or "disabled"))
 -- end, { desc = "Toggle format on save" })
---
--- vim.api.nvim_create_autocmd({ "BufWritePost" }, {
--- 	callback = function()
--- 		require("lint").try_lint()
--- 	end,
--- })
