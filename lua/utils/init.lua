@@ -63,9 +63,12 @@ M.fzf_dirs = function(opts)
 	local fzf_lua = require("fzf-lua")
 	opts = opts or {}
 	opts.prompt = "Directories> "
+
 	opts.fn_transform = function(x)
-		return fzf_lua.utils.ansi_codes.magenta(x)
+		local utils = require("fzf-lua.utils")
+		return utils.ansi_codes.magenta(x)
 	end
+
 	opts.actions = {
 		["enter"] = function(selected)
 			local cwd = vim.fn.getcwd()

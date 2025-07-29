@@ -34,7 +34,7 @@ vim.api.nvim_create_user_command("OrganiseImports", function()
 	organise_imports()
 end, { desc = "Sort TS imports" })
 
--- vim.api.nvim_create_user_command("ToggleFormatOnSave", function()
--- 	vim.g.format_on_save = not vim.g.format_on_save
--- 	print("Format on save " .. (vim.g.format_on_save and "enabled" or "disabled"))
--- end, { desc = "Toggle format on save" })
+vim.api.nvim_create_user_command("ToggleFormatOnSave", function()
+	vim.g.format_on_save = not vim.g.format_on_save
+	print("Format on save " .. (vim.g.format_on_save and "enabled" or "disabled"))
+end, { desc = "Toggle format on save" })

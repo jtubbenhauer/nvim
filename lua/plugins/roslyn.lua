@@ -1,5 +1,5 @@
 local M = {
-	"seblj/roslyn.nvim",
+	"seblyng/roslyn.nvim",
 	ft = "cs",
 	opts = {
 		config = {
