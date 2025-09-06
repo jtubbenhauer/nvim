@@ -9,6 +9,15 @@ vim.api.nvim_create_user_command("VS", function(opts)
 	vim.cmd("vert rightb " .. opts.args)
 end, { nargs = 1 })
 
+vim.api.nvim_create_user_command("ToggleDark", function()
+	local current_scheme = vim.g.colors_name
+	if current_scheme == "github_dark_default" then
+		vim.cmd("colorscheme github_light_high_contrast")
+	else
+		vim.cmd("colorscheme github_dark_default")
+	end
+end, { nargs = 0 })
+
 vim.cmd([[
 au WinNew * au BufEnter * ++once
   \ if (&bt ==? 'help' || &ft ==? 'man')

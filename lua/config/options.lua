@@ -48,6 +48,8 @@ o.shiftwidth = 2
 wo.cursorline = true
 o.swapfile = false
 o.showtabline = 1
+o.winborder = "rounded"
+o.undofile = true
 
 vim.opt.fillchars = {
 	diff = " ",

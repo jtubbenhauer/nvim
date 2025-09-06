@@ -7,6 +7,8 @@ local M = {
 	},
 	build = "make tiktoken",
 	opts = {
+		model = "claude-sonnet-4",
+		temperature = 0.1,
 		window = {
 			layout = "vertical",
 			-- width = 0.5,

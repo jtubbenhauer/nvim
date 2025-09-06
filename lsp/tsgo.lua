@@ -2,6 +2,7 @@
 return {
 	cmd = { "tsgo", "--lsp", "--stdio" },
 	filetypes = {
+		"angularhtml",
 		"javascript",
 		"javascriptreact",
 		"javascript.jsx",
@@ -11,9 +12,9 @@ return {
 	},
 	root_markers = {
 		"tsconfig.json",
-		"jsconfig.json",
-		"package.json",
+		-- "jsconfig.json",
+		-- "package.json",
 		".git",
-		"tsconfig.base.json",
+		-- "tsconfig.base.json",
 	},
 }

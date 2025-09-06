@@ -1,5 +1,6 @@
 local server_configs = {
 	vtsls = {
+		root_markers = { ".git" },
 		filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "htmlangular" },
 		settings = {
 			complete_function_calls = true,
@@ -8,12 +9,13 @@ local server_configs = {
 				experimental = {
 					completion = {
 						enableServerSideFuzzyMatch = true,
+						entriesLimit = 20,
 					},
 				},
 			},
 			typescript = {
 				tsserver = {
-					maxTsServerMemory = 16000,
+					maxTsServerMemory = 12000,
 				},
 			},
 		},
@@ -21,6 +23,23 @@ local server_configs = {
 	eslint = {
 		filetypes = { "javascript", "html", "javascriptreact", "typescript", "typescriptreact", "htmlangular" },
 	},
+	elixirls = {
+		cmd = { "/home/jack/.local/share/nvim/mason/packages/elixir-ls/language_server.sh" },
+	},
+	-- emmet_ls = {
+	-- 	filetypes = {
+	-- 		"html",
+	-- 		"htmlangular",
+	-- 		"javascript",
+	-- 		"javascriptreact",
+	-- 		"typescript",
+	-- 		"typescriptreact",
+	-- 		"elixir",
+	-- 		"eelixir",
+	-- 		"heex",
+	-- 		"surface",
+	-- 	},
+	-- },
 	lua_ls = {
 		lua_ls = {
 			settings = {
@@ -34,6 +53,7 @@ local server_configs = {
 		},
 	},
 	angularls = {
+		root_markers = { "nx.json" },
 		on_init = function(client)
 			client.server_capabilities.renameProvider = false
 		end,

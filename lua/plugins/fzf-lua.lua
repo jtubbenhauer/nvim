@@ -27,6 +27,8 @@ local M = {
 				glob_separator = "%s%-%-", -- query separator pattern (lua): ' --'
 			},
 		})
+
+		require("fzf-lua").register_ui_select()
 	end,
 }
 
