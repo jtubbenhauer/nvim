@@ -99,6 +99,23 @@ M.change_git_signs_base = function()
 	require("fzf-lua").git_branches({
 		actions = {
 			["enter"] = function(selected)
+				-- fzf-lua returns the raw string in selected[1]
+				-- We need to strip the prefix (+, *, space) and take the first word
+				local branch = selected[1]:match("[%*%+]?%s*([^%s]+)")
+
+				if branch then
+					require("gitsigns").change_base(branch)
+					print("Gitsigns base changed to: " .. branch)
+				end
+			end,
+		},
+	})
+end
+
+M.change_git_signs_base_v1 = function()
+	require("fzf-lua").git_branches({
+		actions = {
+			["enter"] = function(selected)
 				local str = selected[1]
 				str = str:gsub("^%s*(.-)%s*$", "%1") -- remove leading and trailing whitespace
 				require("gitsigns").change_base(str)
@@ -119,21 +136,21 @@ M.open_split_to_cwd = function()
 	end
 end
 
-local chat = require("CopilotChat")
+-- local chat = require("CopilotChat")
 
-M.copilot_chat = function()
-	vim.ui.input({
-		prompt = "Chat prompt: ",
-	}, function(input)
-		if input then
-			chat.ask(input)
-		end
-	end)
-end
-
-M.copilot_chat_toggle = function()
-	chat.toggle()
-end
+-- M.copilot_chat = function()
+-- 	vim.ui.input({
+-- 		prompt = "Chat prompt: ",
+-- 	}, function(input)
+-- 		if input then
+-- 			chat.ask(input)
+-- 		end
+-- 	end)
+-- end
+--
+-- M.copilot_chat_toggle = function()
+-- 	chat.toggle()
+-- end
 
 M.format_buffer = function()
 	require("conform").format()
@@ -145,6 +162,14 @@ M.copy_buffer_dir = function()
 	vim.fn.setreg("+", dir) -- system clipboard
 	vim.fn.setreg('"', dir) -- unnamed register (handy for :put)
 	print("📋 Copied: " .. dir)
+end
+
+M.copy_buffer_path = function()
+	-- %:p  => absolute path of the file
+	local path = vim.fn.expand("%:p")
+	vim.fn.setreg("+", path) -- system clipboard
+	vim.fn.setreg('"', path) -- unnamed register (handy for :put)
+	print("📋 Copied: " .. path)
 end
 
 return M

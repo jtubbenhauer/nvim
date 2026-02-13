@@ -25,7 +25,11 @@ set("n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>")
 set("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<CR>")
 set("n", "ge", ":lua vim.diagnostic.open_float()<CR>")
 set("n", "gr", ":lua require('fzf-lua').lsp_references()<CR>")
+-- set("n", "<leader>gd", ":tag <C-r><C-w><CR>")
+-- set("n", "gr", ":lua require('fzf-lua').grep_cword()<cr>")
+-- set("n", "gd", ":tag <C-r><C-w><CR>")
 set("n", "gd", ":lua require('fzf-lua').lsp_definitions()<CR>")
+-- set("n", "<leader>gd", "<C-]>")
 set("n", "<leader>oi", "<cmd>OrganiseImports<CR>")
 
 -- General
@@ -43,6 +47,7 @@ set("n", "<leader>sv", ":SSave default<CR>")
 set("n", "<leader>sl", ":SLoad default<CR>")
 set("n", "<leader>ft", ":ToggleFormatOnSave<CR>")
 set("n", "<leader>cd", ":lua require('utils').copy_buffer_dir()<cr>")
+set("n", "<leader>cp", ":lua require('utils').copy_buffer_path()<cr>")
 
 -- Diffview
 set("n", "<leader>ds", ":lua require('utils').toggle_diffview_status()<CR>")

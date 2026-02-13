@@ -62,3 +62,12 @@ vim.diagnostic.config({
 		border = "single",
 	},
 })
+
+vim.g.gutentags_project_root = { ".git" }
+
+vim.g.gutentags_file_list_command = {
+	markers = {
+		[".git"] = "git ls-files",
+		[".hg"] = "hg files",
+	},
+}

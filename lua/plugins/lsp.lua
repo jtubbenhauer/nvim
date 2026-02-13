@@ -1,7 +1,6 @@
 local server_configs = {
 	vtsls = {
-		root_markers = { ".git" },
-		filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "htmlangular" },
+		filetypes = { "javascript", "astro", "javascriptreact", "typescript", "typescriptreact", "htmlangular" },
 		settings = {
 			complete_function_calls = true,
 			vtsls = {
@@ -15,31 +14,34 @@ local server_configs = {
 			},
 			typescript = {
 				tsserver = {
-					maxTsServerMemory = 12000,
+					maxTsServerMemory = 16000,
 				},
 			},
 		},
 	},
-	eslint = {
-		filetypes = { "javascript", "html", "javascriptreact", "typescript", "typescriptreact", "htmlangular" },
-	},
 	elixirls = {
 		cmd = { "/home/jack/.local/share/nvim/mason/packages/elixir-ls/language_server.sh" },
 	},
-	-- emmet_ls = {
-	-- 	filetypes = {
-	-- 		"html",
-	-- 		"htmlangular",
-	-- 		"javascript",
-	-- 		"javascriptreact",
-	-- 		"typescript",
-	-- 		"typescriptreact",
-	-- 		"elixir",
-	-- 		"eelixir",
-	-- 		"heex",
-	-- 		"surface",
-	-- 	},
-	-- },
+	tailwindcss = {
+		filetypes = {
+			"html",
+			"htmlangular",
+		},
+	},
+	emmet_ls = {
+		filetypes = {
+			"html",
+			"htmlangular",
+			"javascript",
+			"javascriptreact",
+			"typescript",
+			"typescriptreact",
+			"elixir",
+			"eelixir",
+			"heex",
+			"surface",
+		},
+	},
 	lua_ls = {
 		lua_ls = {
 			settings = {
@@ -53,10 +55,14 @@ local server_configs = {
 		},
 	},
 	angularls = {
-		root_markers = { "nx.json" },
+		filetypes = { "typescript", "html", "htmlangular" },
 		on_init = function(client)
 			client.server_capabilities.renameProvider = false
 		end,
+	},
+	astro = {},
+	tsgo = {
+		filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
 	},
 }
 
@@ -77,7 +83,8 @@ local M = {
 
 	{
 		"neovim/nvim-lspconfig",
-		dependencies = { "j-hui/fidget.nvim", opts = {} },
+		dependencies = { "j-hui/fidget.nvim" },
+		opts = {},
 		config = function()
 			for server, config in pairs(server_configs) do
 				vim.lsp.config(server, config)

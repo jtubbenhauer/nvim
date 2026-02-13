@@ -8,7 +8,7 @@ local M = {
 				astro = { "prettier" },
 				javascript = { "prettierd" },
 				typescript = { "prettierd" },
-				typescriptreact = { "prettierd" },
+				typescriptreact = { "prettier" },
 				markdown = { "prettierd" },
 				html = { "prettierd" },
 				elixir = { "mix" },
@@ -65,7 +65,7 @@ local M = {
 				if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
 					return
 				end
-				return { timeout_ms = 500, lsp_format = "fallback" }
+				return { timeout_ms = 2000, lsp_format = "fallback" }
 			end,
 		})
 	end,

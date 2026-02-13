@@ -11,6 +11,7 @@ local M = {
 			"typescriptreact",
 			"javascript",
 			"javascriptreact",
+			"astro",
 		}
 		require("null-ls").setup({
 			sources = {
