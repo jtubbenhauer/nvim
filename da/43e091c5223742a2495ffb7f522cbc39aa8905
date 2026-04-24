@@ -1,0 +1,40 @@
+lua/config/fixup.lua
+  25bd3dc4ee7649e7 1-127
+lua/plugins/gh-review.lua
+  c867cd511044a5a0 1-16
+lua/config/init.lua
+  25bd3dc4ee7649e7 5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "da43e091c5223742a2495ffb7f522cbc39aa8905",
+  "prompts": {
+    "25bd3dc4ee7649e7": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_2958a2cbaffefWQ0UHKt4sLie6",
+        "model": "github-copilot/claude-opus-4.6"
+      },
+      "human_author": "Jack Tubbenhauer",
+      "messages": [],
+      "total_additions": 128,
+      "total_deletions": 0,
+      "accepted_lines": 128,
+      "overriden_lines": 0
+    },
+    "c867cd511044a5a0": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_28b873b00ffe6RTGPbFqXE8pd1",
+        "model": "github-copilot/claude-opus-4.6"
+      },
+      "human_author": "Jack Tubbenhauer",
+      "messages": [],
+      "total_additions": 16,
+      "total_deletions": 0,
+      "accepted_lines": 16,
+      "overriden_lines": 0
+    }
+  }
+}
