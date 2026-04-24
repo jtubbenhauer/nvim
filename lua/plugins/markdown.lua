@@ -6,4 +6,4 @@ local M = {
 	-- dependencies = { "saghen/blink.cmp" },
 }
 
-return M
+return {}

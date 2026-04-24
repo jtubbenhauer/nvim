@@ -49,17 +49,24 @@ local organise_imports_v2 = function()
 	end
 end
 
+-- local organise_imports = function()
+-- 	local ft = vim.bo.filetype:gsub("react$", "")
+-- 	if ft == "typescript" then
+-- 		local ok = vim.lsp.buf_request_sync(0, "workspace/executeCommand", {
+-- 			command = "typescript.organizeImports",
+-- 			arguments = { vim.api.nvim_buf_get_name(0) },
+-- 		}, 3000)
+-- 		if not ok then
+-- 			print("Organise imports timeout or failed to complete.")
+-- 		end
+-- 	end
+-- end
+
 local organise_imports = function()
-	local ft = vim.bo.filetype:gsub("react$", "")
-	if ft == "typescript" then
-		local ok = vim.lsp.buf_request_sync(0, "workspace/executeCommand", {
-			command = "typescript.organizeImports",
-			arguments = { vim.api.nvim_buf_get_name(0) },
-		}, 3000)
-		if not ok then
-			print("Organise imports timeout or failed to complete.")
-		end
-	end
+	vim.lsp.buf.code_action({
+		context = { only = { "source.organizeImports" }, diagnostics = {} },
+		apply = true,
+	})
 end
 
 -- eslint_d

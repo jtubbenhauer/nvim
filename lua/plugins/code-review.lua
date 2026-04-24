@@ -1,14 +1,14 @@
--- code-review.nvim plugin spec for lazy.nvim
-return {
+local M = {
 	"jtubbenhauer/code-review.nvim",
 	dependencies = {
-		"lewis6991/gitsigns.nvim",
-		"nvim-tree/nvim-web-devicons",
-		{ "axkirillov/unified.nvim", opts = {} },
+		"lewis6991/gitsigns.nvim", -- optional but recommended
+		"nvim-tree/nvim-web-devicons", -- optional
+		{ "axkirillov/unified.nvim", opts = {} }, -- optional, for inline diff view
 	},
-	opts = {},
+	cmd = { "Review", "ReviewLocal", "ReviewClose", "ReviewRefresh" },
 	keys = {
 		{ "<leader>cr", "<cmd>Review<cr>", desc = "Start code review" },
+		{ "<leader>crl", "<cmd>ReviewLocal<cr>", desc = "Review local changes" },
 		{ "<leader>crc", "<cmd>ReviewClose<cr>", desc = "Close code review" },
 		{ "<leader>crr", "<cmd>ReviewRefresh<cr>", desc = "Refresh code review" },
 		{
@@ -40,5 +40,7 @@ return {
 			desc = "Toggle unified diff",
 		},
 	},
-	cmd = { "Review", "ReviewClose", "ReviewRefresh" },
+	opts = {},
 }
+
+return M
