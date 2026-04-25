@@ -136,22 +136,6 @@ M.open_split_to_cwd = function()
 	end
 end
 
--- local chat = require("CopilotChat")
-
--- M.copilot_chat = function()
--- 	vim.ui.input({
--- 		prompt = "Chat prompt: ",
--- 	}, function(input)
--- 		if input then
--- 			chat.ask(input)
--- 		end
--- 	end)
--- end
---
--- M.copilot_chat_toggle = function()
--- 	chat.toggle()
--- end
-
 M.format_buffer = function()
 	require("conform").format()
 end
