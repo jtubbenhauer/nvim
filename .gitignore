@@ -1,2 +1,6 @@
 tags
 tags.*
+pack/
+.opencode/
+*.vim
+tmp/
