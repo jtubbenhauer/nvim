@@ -1,0 +1,36 @@
+plugin/lualine.lua
+  5e69b64300d4000b 42-43,50
+lsp/tsgo.lua
+  b7258c30f43ac6c6 3,12-16,20-21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "0f60d289de02a17096c6935e021da61952fbbd8c",
+  "prompts": {
+    "5e69b64300d4000b": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_229ef3e2fffeDrqBJtxpTz3aOT",
+        "model": "github-copilot/claude-opus-4.6"
+      },
+      "human_author": "Jack Tubbenhauer <jack@tubbs.dev>",
+      "total_additions": 24,
+      "total_deletions": 24,
+      "accepted_lines": 5,
+      "overriden_lines": 0
+    },
+    "b7258c30f43ac6c6": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_2054c48eaffe3B54uMzSje6H3F",
+        "model": "github-copilot/claude-opus-4.6"
+      },
+      "human_author": "Jack Tubbenhauer <jack@tubbs.dev>",
+      "total_additions": 11,
+      "total_deletions": 0,
+      "accepted_lines": 6,
+      "overriden_lines": 8
+    }
+  }
+}
