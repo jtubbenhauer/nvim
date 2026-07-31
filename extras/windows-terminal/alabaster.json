@@ -1,0 +1,88 @@
+{
+  "$schema": "https://aka.ms/terminal-color-schemes",
+  "_comment": "Alabaster color schemes for Windows Terminal — based on tonsky.me/blog/syntax-highlighting/",
+  "_source": "Palette faithful to tonsky/sublime-scheme-alabaster",
+  "_usage": "Paste the contents of 'schemes' into the 'schemes' array in your Windows Terminal settings.json",
+
+  "schemes": [
+    {
+      "name": "Alabaster Light",
+
+      "_palette_notes": [
+        "Four semantic colors: strings=green, constants=magenta, comments=red, defs=blue/amber",
+        "Keywords and variables: base foreground (black)",
+        "Punctuation/delimiters: grey",
+        "Comments are BRIGHT red — not greyed out (per tonsky article principle)"
+      ],
+
+      "background":          "#F7F7F7",
+      "foreground":          "#000000",
+      "cursorColor":         "#007ACC",
+      "selectionBackground": "#BFDBFE",
+
+      "black":         "#1A1A1A",
+      "brightBlack":   "#777777",
+
+      "red":           "#AA3731",
+      "brightRed":     "#CC5552",
+
+      "green":         "#448C27",
+      "brightGreen":   "#5FAD3B",
+
+      "yellow":        "#B8860B",
+      "brightYellow":  "#FFBC5D",
+
+      "blue":          "#325CC0",
+      "brightBlue":    "#4A75D9",
+
+      "purple":        "#7A3E9D",
+      "brightPurple":  "#9B5CBD",
+
+      "cyan":          "#007ACC",
+      "brightCyan":    "#3399E0",
+
+      "white":         "#808080",
+      "brightWhite":   "#F7F7F7"
+    },
+
+    {
+      "name": "Alabaster Dark",
+
+      "_palette_notes": [
+        "Four semantic colors: strings=green, constants=magenta, comments=yellow, defs=blue/amber",
+        "Comments are yellow (NOT grey) — red freed for diagnostics/errors on dark bg",
+        "Keywords and variables: base foreground (light grey)",
+        "Punctuation: muted grey-teal"
+      ],
+
+      "background":          "#090B10",
+      "foreground":          "#D4D4D4",
+      "cursorColor":         "#E5A045",
+      "selectionBackground": "#1E2A45",
+
+      "black":         "#090B10",
+      "brightBlack":   "#5A6A7A",
+
+      "red":           "#E06C75",
+      "brightRed":     "#EF8A92",
+
+      "green":         "#98C379",
+      "brightGreen":   "#B0D494",
+
+      "yellow":        "#E5C07B",
+      "brightYellow":  "#EDD08E",
+
+      "blue":          "#61AFEF",
+      "brightBlue":    "#7CC0F5",
+
+      "purple":        "#C678DD",
+      "brightPurple":  "#D494E8",
+
+      "cyan":          "#5A6A7A",
+      "brightCyan":    "#7A8A9A",
+
+      "white":         "#D4D4D4",
+      "brightWhite":   "#F0F0F0"
+    }
+  ]
+}

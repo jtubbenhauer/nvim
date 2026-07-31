@@ -23,3 +23,6 @@ set("n", "<leader>ci", ":Inspect<CR>")
 -- Copy paths
 set("n", "<leader>cd", ":lua require('utils').copy_buffer_dir()<cr>")
 set("n", "<leader>cp", ":lua require('utils').copy_buffer_path()<cr>")
+set({ "n", "v" }, "<leader>cl", function()
+	require("utils").copy_location()
+end)

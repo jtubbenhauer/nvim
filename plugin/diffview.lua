@@ -1,8 +1,8 @@
 vim.pack.add({
-  'https://github.com/sindrets/diffview.nvim',
+	"https://github.com/dlyongemallo/diffview.nvim",
 })
 
-require('diffview').setup()
+require("diffview").setup()
 
 local set = vim.keymap.set
 set("n", "<leader>ds", ":lua require('utils').toggle_diffview_status()<CR>")

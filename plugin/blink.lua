@@ -17,6 +17,19 @@ require('blink.cmp').setup({
   },
   sources = {
     default = { "lsp", "buffer" },
+    per_filetype = {
+      opencode = {},
+      dressing_input = {
+        default = {},
+        cmdline = {},
+        completion = { enabled = false },
+      },
+      DressingInput = {
+        default = {},
+        cmdline = {},
+        completion = { enabled = false },
+      },
+    },
     providers = {
       lsp = { async = true },
     },

@@ -30,6 +30,12 @@ vim.api.nvim_create_user_command("OrganiseImports", organise_imports, { desc = "
 
 local set = vim.keymap.set
 set("n", "<leader>rn", vim.lsp.buf.rename)
-set("n", "<leader>ca", vim.lsp.buf.code_action)
+set("n", "<leader>ca", function()
+	vim.lsp.buf.code_action({
+		filter = function(action)
+			return action.kind ~= "refactor.rewrite"
+		end,
+	})
+end)
 set("n", "ge", vim.diagnostic.open_float)
 set("n", "<leader>oi", "<cmd>OrganiseImports<CR>")

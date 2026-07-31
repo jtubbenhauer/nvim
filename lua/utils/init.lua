@@ -84,6 +84,21 @@ M.fzf_git_changes = function()
 	})
 end
 
+M.fzf_git_compare = function()
+	require("fzf-lua").git_branches({
+		actions = {
+			["enter"] = function(selected)
+				local branch = selected[1]:match("[%*%+]?%s*([^%s]+)")
+				if branch then
+					require("fzf-lua").git_files({
+						cmd = "git diff --name-only " .. branch,
+					})
+				end
+			end,
+		},
+	})
+end
+
 M.grep_directory = function()
 	local oil = require("oil")
 	local dir = oil.get_current_dir()
@@ -154,6 +169,31 @@ M.copy_buffer_path = function()
 	vim.fn.setreg("+", path) -- system clipboard
 	vim.fn.setreg('"', path) -- unnamed register (handy for :put)
 	print("📋 Copied: " .. path)
+end
+
+M.copy_location = function()
+	local path = vim.fn.expand("%:.")
+	local mode = vim.fn.mode()
+	local location
+
+	if mode:match("[vV\22]") then
+		local start_line = vim.fn.getpos("v")[2]
+		local end_line = vim.fn.getpos(".")[2]
+		if start_line > end_line then
+			start_line, end_line = end_line, start_line
+		end
+		vim.cmd("normal! \27")
+		if start_line ~= end_line then
+			location = path .. ":" .. start_line .. "-" .. end_line
+		else
+			location = path .. ":" .. start_line
+		end
+	else
+		location = path .. ":" .. vim.fn.line(".")
+	end
+	vim.fn.setreg("+", location)
+	vim.fn.setreg('"', location)
+	print("📋 Copied: " .. location)
 end
 
 return M
